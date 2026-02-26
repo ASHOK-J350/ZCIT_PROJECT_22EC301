@@ -1,0 +1,54 @@
+managed implementation in class ZZCIBP_R_CIT_TAP_22EC301 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZZCIR_CIT_TAP_22EC301 alias ZzcirCitTap22ec301
+persistent table ZCIT_TAP_22EC301
+extensible
+draft table ZZCICT_TP_22C3_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( mandatory : create )
+   Rollno;
+
+  field ( readonly )
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Rollno;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZCIT_TAP_22EC301 corresponding extensible
+  {
+    Rollno = ROLLNO;
+    StudentFullName = STUDENT_FULL_NAME;
+    Gender = GENDER;
+    DateOfBirth = DATE_OF_BIRTH;
+    FatherName = FATHER_NAME;
+    MotherName = MOTHER_NAME;
+    Department = DEPARTMENT;
+    AdmissionDate = ADMISSION_DATE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+}
